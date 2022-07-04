@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/admincoursesdetails.css">
+  <title>Qalam</title>
+</head>
+
+<body>
+  <div id="mid" class="color">
+    <img id="image" src="https://qalam.nust.edu.pk/odoocms_assets/static/img/logo.svg">
+    <h3 id="title" class="Title">National University of Sciences & Technology</h3>
+    <h1 id="title2" class="Title">NUST</h1>
+    <form action="/adminlogin/adminallteachers" method="get">
+      <button id="backbtn" onclick="history.back()">Back >> </button>
+    </form>
+  </div>
+  <div id="tablecontainer">
+    <div id="table" class="ex3">
+      <table>
+        <tr>
+          <p> INSTRUCTOR COURSE DETAILS: 
+            <form action="/adminlogin/adminallteachers/adminteachercourses/adminaddcourse" method="post">
+              <input style="display: none;" type="text" , value="<%= teacherid %> " name="teacherid">             
+              <button class="course">Add Course</button>
+            </form>
+          </p>
+          <th><b>Course ID</b></th>
+          <th><b>Course Name </b></th>
+          <th><b>Credit hrs</b></th>
+          <th><b>Drop coruse</b></th>
+        </tr>
+
+        <% for (var i=0; (i < result.length) && result[0].courseid; i++ ) { %>
+
+          <tr>
+            <td>
+              <%= result[i].courseid %>
+            </td>
+            <td>
+              <%= result[i].coursename %>
+            </td>
+            <td>
+                <%= result[i].credithrs %>
+            </td>
+            <td>
+              <form action="/adminlogin/adminallteachers/adminteachercourses/adminteacherdropcourse" method="post">
+                <input style="display: none;" type="text" , value="<%= result[i].teacherid %>" name="teacherid">
+                <input style="display: none;" type="text" , value="<%= result[i].courseid %>" name="courseid">                
+                <button onclick="aleart_function()" class="course">drop</button>
+              </form>
+            </td>
+
+          </tr>
+
+          <% } %>
+
+      </table>
+    </div>
+  </div>
+
+    <script>
+      function aleart_function() {
+          let text = "Do you want to delete the teacher and everything related to him?";
+          if (confirm(text) == false) {
+              document.getElementById("table").innerHTML = `
+              <div id="table" class="ex3">
+                <table>
+                  <tr>
+                    <p>COURSE AND INSTRUCTOR DETAILS : </p>
+                    <th><b>Course ID</b></th>
+                    <th><b>Course Name </b></th>
+                    <th><b>Credit hrs</b></th>
+                    <th><b>Drop coruse</b></th>
+                  </tr>
+
+                  <% for (var i=0; (i < result.length) && result[0].courseid; i++ ) { %>
+
+                    <tr>
+                      <td>
+                        <%= result[i].courseid %>
+                      </td>
+                      <td>
+                        <%= result[i].coursename %>
+                      </td>
+                      <td>
+                        <%= result[i].credithrs %>
+                      </td>
+                      <td>
+                        <form action="" method="post">
+                          <input style="display: none;" type="text" , value="<%= result[i].cmsid %>" name="teacherid">
+                          <input style="display: none;" type="text" , value="<%= result[i].courseid %>" name="courseid">
+                          <button class="course">drop</button>
+                        </form>
+                      </td>
+
+                    </tr>
+
+                    <% } %>
+
+                </table>
+              </div>
+            `;
+          }
+      }
+  </script>
+
+
+</body>
+
+</html>

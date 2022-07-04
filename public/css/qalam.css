@@ -1,0 +1,113 @@
+body {
+    background: lightgrey;
+    margin: 0%;
+}
+
+#title {
+    color: white;
+    margin-left: 5px;
+}
+
+.Title {
+    display: flex;
+    text-align: center;
+}
+
+#image {
+    width: 64px;
+    height: 65px;
+    float: left;
+    margin-left: 50px;
+}
+
+#mid {
+    margin: auto;
+    height: 14vh;
+    width: 85vw;
+    text-align: left center;
+    display: flex;
+    align-items: center;
+}
+
+.color {
+    background: linear-gradient(to right, rgb(40, 110, 208), rgb(34, 139, 84));
+}
+
+#qalam {
+    color: black;
+}
+
+.center {
+    height: 330px;
+    width: 390px;
+    margin: auto;
+    text-align: center;
+    background-color: white
+}
+
+#login {
+    /* background: radial-gradient(rgb(75, 44, 212),rgb(30, 15, 95)); */
+    background: linear-gradient(to right, rgb(34, 139, 84), rgb(40, 110, 208));
+    color: white;
+    width: 200px;
+    height: 50px;
+}
+
+#text {
+    text-align: center;
+}
+
+#text1 {
+    text-align: center;
+}
+
+
+#title2 {
+    color: white;
+    margin-left: 10px;
+}
+
+#image {
+    margin-left: 5vw;
+}
+
+@media only screen and (min-width: 780px) {
+    #title2 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    #mid {
+        width: 100%;
+    }
+
+    #title2 {
+        display: default;
+    }
+
+    #title {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    #backbtn {
+        width: 90px;
+        height: 50px;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .center {
+        height: 400px;
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-height: 460px) {
+    #image {
+        width: 45px;
+    }
+}

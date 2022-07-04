@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/adminstudentsdetails.css">
+    <title>Qalam</title>
+</head>
+<body>
+    <div id="mid" class="color">
+        <img id="image" src="https://qalam.nust.edu.pk/odoocms_assets/static/img/logo.svg">
+        <h3 id="title" class="Title">National University of Sciences & Technology</h3>
+        <h1 id="title2" class="Title">NUST</h1>
+        <button style="margin-top: 0;" id="backbtn" onclick="history.back()">Back >> </button>
+        
+    </div>
+    <div id="tablecontainer">
+        <div id="table" class="ex3">
+            <h1>Previous Results</h1>
+            <table style="width: 89vw;">
+                <tr>
+                    <th><b>Semester</b></th>
+                    <th><b>Grade Points</b></th>
+                    <th><b>Total Credits</b></th>
+                    <th><b>GPA</b></th>
+                    <th><b>CGPA</b></th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <%= semester %>
+                    </td>
+                    <td>
+                        <%= gradepoint %>
+                    </td>
+                    <td>
+                            <%= credits %>
+                    </td>
+                    <td>
+                            <%= gpa %>
+                        
+                    </td>
+                    <td>
+                            <%= cgpa %>
+                        
+                    </td>
+                </tr>
+
+            </table>
+            <br>
+            <table style="width: 89vw;">
+                <tr>
+                    <th><b>Course</b></th>
+                    <th><b>Credits</b></th>
+                    <th><b>Marks Obtained</b></th>
+                    <th><b>Grade Pts</b></th>
+                    <th><b>Final Grade</b></th> 
+                </tr>
+
+                <% for (var i=0; i < result.length; i++ ) { %>
+ 
+                    <tr>
+                        <td>
+                            <%= result[i].coursename %>
+                        </td>
+                        <td>
+                            <%= result[i].credithrs %>
+                        </td>
+                        <td>
+                            <%= result[i].omassignments +  result[i].omquizes + result[i].omfinals%>
+                        </td>
+                        <td>
+                            <% if (result[i].grade == "A") { %> 
+                                <%= result[i].credithrs * 4 %>  
+                            <%} else if (result[i].grade == "B+") {%> 
+                                <%= result[i].credithrs * 3.5 %>  
+                            <%} else if (result[i].grade == "B") {%> 
+                                <%= result[i].credithrs * 3 %>  
+                            <%} else if (result[i].grade == "C+") {%> 
+                                <%= result[i].credithrs * 2.5 %> 
+                            <%} else if (result[i].grade == "C") {%> 
+                                <%= result[i].credithrs * 2 %> 
+                            <%} else if (result[i].grade == "D+") {%> 
+                                <%= result[i].credithrs * 1.5 %>
+                            <%} else if (result[i].grade == "D") {%> 
+                                <%= result[i].credithrs * 1 %>
+                            <%} else if (result[i].grade == "F") {%> 
+                                <%= result[i].credithrs * 0 %>   
+                            <%}%>
+                        </td>
+                        <td>
+                            <%= result[i].grade %>
+                        </td>
+                    </tr>
+
+                <% } %>
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>

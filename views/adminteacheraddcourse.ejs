@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/teachermarkattendence.css">
+    <title>Qalam</title>
+      
+</head>
+
+<body>
+
+    <div id="mid" class="color">
+        <img id="image" src="https://qalam.nust.edu.pk/odoocms_assets/static/img/logo.svg">
+        <h3 id="title" class="Title">National University of Sciences & Technology</h3>
+        <h1 id="title2" class="Title">NUST</h1>
+        <form action="/adminlogin/adminallteachers/adminteachercourses" method="post">
+            <input style="display: none;" type="text" name="teacherid" value="<%= teacherid %>">
+            <button style="margin-top: -24px;" id="backbtn">Back >> </button>
+        </form>
+    </div>
+
+    <div id="tablecontainer">
+        <div id="table" class="ex3">
+            <h2>Add Course for teacher</h2>
+            <form action="/adminlogin/adminallteachers/adminteachercourses/adminaddcourse/adminaddcourseupload" method="post" >
+
+                <table>
+
+                    <tr>
+                        <th><b>CMS ID</b></th>
+                        <th><b>Course ID</b></th>
+                        <th><b>Course Name</b></th>
+                        <th><b>Credit hrs</b></th>
+                        <th><b>Register</b></th>
+                    </tr>
+                    <% for (var i=0; i < result.length; i++ ) { %>
+
+                        <tr>
+                            <td>
+                                <%= result[i].cmsid %>
+                            </td>
+                            <td>
+                                <%= result[i].courseid %>
+                            </td>
+                            <td>
+                                <%= result[i].coursename %>
+                            </td>
+                            <td>
+                                <%= result[i].credithrs %>
+                            </td>
+                            <td>
+                                <label class="container">Select
+                                    <input type="checkbox" name="<%= result[i].courseid %>">
+                                    <input style="display: none;" type="text" name="<%= result[i].courseid %>" value="<%= teacherid %>">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+
+                    <% } %>
+
+                </table>
+                <button style="margin-top: auto;" type="submit" class="course">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

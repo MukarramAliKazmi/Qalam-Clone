@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/studentresults.css">
+    <title>Qalam</title>
+
+    <style>
+        .current_courses {
+            display: none;
+        }
+
+        .previous_courses {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="mid" class="color">
+        <img id="image" src="https://qalam.nust.edu.pk/odoocms_assets/static/img/logo.svg">
+        <h3 id="title" class="Title">National University of Sciences & Technology</h3>
+        <h1 id="title2" class="Title">NUST</h1>
+        <button id="backbtn" onclick="history.back()">Back >> </button>
+    </div>
+    <h1 id="results">Results</h1>
+
+    <% if (result.length > 0) { %>
+        <div class="subjects" id="current_courses">
+            <div style="display: flex; flex-direction: row; width: 30vw; position: fixed;">
+                <button id="SN" style="margin: 0; width: 15vw; height: 20px; margin-top: -5.5px; padding: 0; border-bottom: 5px solid white; border-top: none; border-left: none; border-right: none;" onclick="current()">Current (not graded)</button>
+                <button id="SN" style="margin: 0; width: 15vw; height: 20px; margin-top: -5.5px; padding: 0; border-bottom: 5px solid white; border-top: none; border-left: none; border-right: none;" onclick="previous()">Previous</button>
+            </div>
+
+            <br>
+
+            <h3 <% if (result==null) { %>style="display: default; color: red"<%} else { %>style="display: none;"<% }%>>No courses registerd</h3>
+
+            <% for (var i=0; i < result.length; i++ ) { %>
+
+                <form action="/studentlogin/studentresults/courseid_<%= result[0].courseid %>/studentresultsdetails" method="post">
+                    <input style="display: none;" type="text" , value="<%= result[i].coursename %>" name="sub1">
+                    <button id="SN" type="submit">
+                        <h3>
+                            <%= result[i].coursename%>
+                                <%= result[i].grade %>
+                        </h3>
+                    </button>
+                </form>
+
+            <% } %>
+
+        </div>
+
+        <div class="subjects previous_courses" id="previous_courses">
+            <div style="display: flex; flex-direction: row; width: 30vw; position: fixed;">
+                <button id="SN" style="margin: 0; width: 15vw; height: 20px; margin-top: -5.5px; padding: 0; border-bottom: 5px solid white; border-top: none; border-left: none; border-right: none;" onclick="current()">Current (not graded)</button>
+                <button id="SN" style="margin: 0; width: 15vw; height: 20px; margin-top: -5.5px; padding: 0; border-bottom: 5px solid white; border-top: none; border-left: none; border-right: none;" onclick="previous()">Previous</button>
+            </div>
+
+            <br>
+            
+
+            <% for (var i=1; i <= result[0].semester; i++ ) { %>
+
+                <form action="/studentlogin/studentresults/previous_courses/semester_<%= i %>/studentpreviousresultsdetails" method="post">
+                    <input style="display: none;" type="text" value="<%= i %>" name="semester">
+                    <button style="padding: 5px;" id="SN" type="submit">
+                        <h4>
+                            Semester <%= i %> <% if (i == result[0].semester) { %>(current graded)<%}%>
+                        </h4>
+                    </button>
+                </form>
+
+            <% } %>
+
+        </div>
+
+    <%} else { %>
+        <div class="subjects" id="current_courses">
+            <h1 style="color: red;">No courses registered</h1>
+        </div>
+    <% } %>
+
+    <script>
+        let current_courses = document.getElementById("current_courses")
+        let previous_courses = document.getElementById("previous_courses")
+
+        function current() {
+            current_courses.classList.remove("current_courses")
+            previous_courses.classList.add("previous_courses")
+        }
+
+        function previous() {       
+            current_courses.classList.add("current_courses")
+            previous_courses.classList.remove("previous_courses")
+        }
+
+    </script>
+
+</body>
+
+</html>

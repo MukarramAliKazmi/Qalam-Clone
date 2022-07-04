@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/studentindex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Qalam</title>
+</head>
+
+<body> 
+    <div id="mid" class="color">
+        <button onclick="Hfunction()" id="btn">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+
+        <img id="image" src="https://qalam.nust.edu.pk/odoocms_assets/static/img/logo.svg">
+        <h3 id="title" class="Title">National University of Sciences & Technology</h3>
+        <h1 id="title2" class="Title">NUST</h1>
+    </div> 
+
+    <div id="container">
+
+        <div id="bar">
+
+            <form action="<%= url %>/studentprofile" method="get">
+                <button class="btn" type="submit">
+                    <h3> <img style="width: 30px; margin-bottom: -10px; margin-right: 10px;" src="https://icons.veryicon.com/png/o/object/material-design-icons/face-2.png" alt=""> Profile</h3>
+                </button>
+            </form>
+
+            <form action="<%= url %>/studentattendence" method="get">
+                <button class="btn" type="submit">
+                    <h3 style="margin-top: 9px;"> <img style="width: 30px; margin-bottom: -10px; margin-right: 10px;" src="data:image/png;base64,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" alt=""> Attendence</h3>
+                </button>
+            </form>
+
+            <form action="<%= url %>/studentresults" method="get">
+                <button class="btn" type="submit">
+                    <h3> <img style="width: 30px; margin-bottom: -10px; margin-right: 10px;" src="http://cdn.onlinewebfonts.com/svg/img_455256.png" alt=""> Results & Exams</h3>
+                </button>
+            </form>
+
+            <form action="<%= url %>/studentregistercourses" method="get">
+                <button class="btn" type="submit">
+                    <h3 style="margin-top: 5px;"> <img style="width: 40px; margin-bottom: -15px; margin-left: -5px; margin-right: 5px;" src="https://icons.veryicon.com/png/o/business/xbim/registration-1.png" alt=""> Register Courses</h3>
+                </button>
+            </form>
+
+            <form id="logout" action="/logout" method="POST">
+                <button type="submit" class="button button2">Log Out <i class="fa fa-sign-out" style="font-size: 15px; margin-left: 5px;"></i></button>
+            </form>
+        </div>
+
+
+        <div id="box">
+
+            <form action="<%= url %>/studentprofileupload" method="get">
+                <button class="btn" type="submit"><img id="round" src=<%=profile %>></button>
+            </form>
+
+            <div id="profile2">
+
+                <p id="profile1">Name &nbsp;&nbsp;&nbsp;: <%= name %>
+                </p>
+                <p id="profile1">CMS ID : <%= cmsid %>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/registration.js"></script>
+</body>
+
+</html>
