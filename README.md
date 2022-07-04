@@ -1,5 +1,5 @@
 # Qalam-Clone
-Qalam is a university management system, I have created this project as a part of my end semester project.
+Qalam is a university management system, I have created this project as a semester project for Database Systems.
 
 Setps for the beginners to use this project:
   1) Install nodejs and mysql.
