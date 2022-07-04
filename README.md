@@ -1,8 +1,8 @@
 # Qalam-Clone
-Qalam is a university management system, I created this project as a part of my end semester project at univeristy.
+Qalam is a university management system, I have created this project as a part of my end semester project.
 
-Setps for the beginners to use this project: 
-  1) Install nodejs and mysql. 
+Setps for the beginners to use this project:
+  1) Install nodejs and mysql.
   2) Open the folder in the terminal and write "npm install".
   3) Create a mysql database on your computer, named QalamDatabase, and add all the tables you can fing in the QalamDatabase folder.
   4) Set the user of the database to 'root' and password to 'password', you can change it later and update the code accordingly.
